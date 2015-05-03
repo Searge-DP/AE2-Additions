@@ -17,12 +17,27 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+ext.configFile = file "gradle.properties"
+
+configFile.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+version = "${config.minecraft_version}-${config.mod_version}"
+group= "com.dyonovan.ae2additions" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "AE2-Additions"
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 minecraft {
-    version = "1.7.10-10.13.2.1291"
+    version = config.minecraft_version + "-" + config.forge_version
+
+    replaceIn "Constants.java"
+    replace "@VERSION@", "${config.mod_version}"
+
     runDir = "eclipse"
 }
 

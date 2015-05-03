@@ -1,0 +1,16 @@
+[
+{
+"modid": "ae2additions",
+"name": "AE2-Additions",
+"description": "Addon for Applied Energistics 2",
+"version": "${version}",
+"mcversion": "${mcversion}",
+"url": "www.dyonovan.com",
+"updateUrl": "",
+"authorList": ["Dyonovan"],
+"credits": "AlgorithmX2 et al",
+"logoFile": "",
+"screenshots": [],
+"dependencies": []
+}
+]
